@@ -1,5 +1,8 @@
 package com.simple.dagger.dagger2.network;
 
+import com.simple.dagger.dagger2.models.GithubRepo;
+import com.simple.dagger.dagger2.models.GithubUser;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -15,7 +18,7 @@ public interface GithubService {
     Call<List<GithubRepo>> getAllRepo();
 
     @GET("users/{username}")
-    Call<GithubUser> getAllRepo();
+    Call<GithubUser> getUser(@Path("username") String username);;
 
 
 }

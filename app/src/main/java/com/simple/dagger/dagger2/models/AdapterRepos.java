@@ -5,11 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.simple.dagger.dagger2.screens.home.HomeActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class AdapterRepos extends BaseAdapter {
 
@@ -18,7 +21,8 @@ public class AdapterRepos extends BaseAdapter {
     private List<GithubRepo> repoList = new ArrayList<>();
 
 
-    public AdapterRepos(Context context, Picasso picasso){
+    @Inject
+    public AdapterRepos(HomeActivity context, Picasso picasso){
         this.context = context;
         this.picasso = picasso;
     }

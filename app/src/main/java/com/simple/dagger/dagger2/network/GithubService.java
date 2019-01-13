@@ -18,7 +18,7 @@ public interface GithubService {
     Call<List<GithubRepo>> getAllRepo();
 
     @GET("users/{username}")
-    Call<GithubUser> getUser(@Path("username") String username);;
+    Call<GithubUser> getUser(@Path("username") String username);
 
 
 }

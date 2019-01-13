@@ -2,28 +2,16 @@ package com.simple.dagger.dagger2.screens;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.simple.dagger.dagger2.network.GithubService;
-import com.squareup.picasso.OkHttp3Downloader;
+import com.simple.dagger.dagger2.screens.home.ApplicationContextModule;
 import com.squareup.picasso.Picasso;
-
-import java.io.File;
-
-import okhttp3.Cache;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import timber.log.Timber;
 
 public class GithubApplication extends Application {
 
 
     private GithubService githubService;
     private Picasso picasso;
+    private GithubApplicationComponent component;
 
     public static GithubApplication get(Activity activity){
         return (GithubApplication) activity.getApplication();
@@ -33,12 +21,23 @@ public class GithubApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        component = DaggerGithubApplicationComponent.builder()
+                .applicationContextModule(new ApplicationContextModule(this)).build();
+
+        githubService = component.getGithubService();
+        picasso = component.getPicasso();
+
+        GithubService githubService1 = component.getGithubService();
+        Picasso picasso1 = component.getPicasso();
+
+        GithubService githubService2 = component.getGithubService();
+        Picasso picasso2 = component.getPicasso();
 
 
-        //CONTEXT
-        Context context = this;
+    }
 
-
+    public GithubApplicationComponent getComponent(){
+        return component;
     }
 
     public GithubService getGithubService(){

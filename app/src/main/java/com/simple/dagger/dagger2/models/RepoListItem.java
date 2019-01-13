@@ -1,18 +1,13 @@
 package com.simple.dagger.dagger2.models;
 
 import android.content.Context;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.util.AttributeSet;
+
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.simple.dagger.dagger2.R;
 import com.squareup.picasso.Picasso;
-
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +37,6 @@ public class RepoListItem extends FrameLayout {
     @BindView(R.id.repo_updated_at)
     TextView repoUpdatedAt;
 
-//    public static DateTimeFormatter DATE_TIME_FORMATTER = new DateTime.fu;
 
     public RepoListItem(Context context, Picasso picasso) {
         super(context);
@@ -52,7 +46,6 @@ public class RepoListItem extends FrameLayout {
     }
 
     public void setRepo(GithubRepo githubRepo){
-        Locale locale = getResources().getConfiguration().locale;
         repoName.setText(githubRepo.name);
         repoStars.setText(githubRepo.starGazerCount);
         repoDescription.setText(githubRepo.description);
